@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>User</title>
+</head>
+
+<body>
+<div th:if = "${#request.userPrincipal.getName() == user.getUsername()}">
+    <p th:text="${user.getUsername()}"></p>
+    <p th:text="${user.getAge()}"></p>
+    <p th:text="${user.getEmail()}"></p>
+    <p th:text="${user.getId()}"></p>
+    <p th:text="${user.getPassword()}"></p>
+    <p th:text="${user.getRoles()}"></p>
+    <br/>
+    <a th:href="@{/logout}">Logout</a>
+
+</div>
+<div th:unless = "${#request.userPrincipal.getName() == user.getUsername()}">
+    <h1>It is not your page</h1>
+    <br/>
+    <a th:href="@{/logout}">Logout</a>
+</div>
+</body>
+</html>
